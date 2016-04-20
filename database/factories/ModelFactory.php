@@ -19,3 +19,10 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Company::class, function (Faker\Generator $faker) {
+    return [
+        'comp_name' => $faker->company ,
+        'comp_other' => $faker->catchPhrase
+    ];
+});
