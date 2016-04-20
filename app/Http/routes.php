@@ -11,6 +11,14 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+
+Route::get('/', [
+    'uses' => 'CompanyController@index',
+    'as'   => 'company_index_path'
+]);
+
+Route::post('/dashboard', [
+    'uses' => 'CompanyController@dashboard',
+    'as'   => 'company_dashboard_path'
+]);
