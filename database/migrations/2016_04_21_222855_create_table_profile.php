@@ -16,9 +16,12 @@ class CreateTableProfile extends Migration
               $table->increments('prof_id');
               $table->string('prof_name');
               $table->double('prof_salary');
-              $table->float('prof_min');
-              $table->float('prof_max');
+              $table->float('prof_progresion')->default(0.01);
+              $table->float('prof_min')->default(0.01);
+              $table->float('prof_max')->default(0.01);;
               $table->integer('prof_grade');
+              $table->integer('comp_id');
+              $table->integer('pos_id');
               $table->timestamps();
           });
       }
