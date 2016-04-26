@@ -13,7 +13,7 @@ class CreateTableProfile extends Migration
      public function up()
       {
           Schema::create('profiles', function (Blueprint $table) {
-              $table->increments('prof_id');
+              $table->increments('id');
               $table->string('prof_name');
               $table->double('prof_salary');
               $table->float('prof_progresion')->default(0.01);

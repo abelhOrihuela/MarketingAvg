@@ -12,5 +12,14 @@ class CompanySeeder extends Seeder
     public function run()
     {
         factory(App\Company::class, 5)->create();
+        factory(App\Position::class, 5)->create();
+        factory(App\Profile::class, 50)->create();
     }
+/*
+
+    factory(PlatziPHP\User::class, 10)->create()->each(function ($user) {
+            $post = factory(PlatziPHP\Post::class)->make();
+            $user->posts()->save($post);
+        });
+*/
 }

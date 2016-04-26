@@ -26,3 +26,19 @@ $factory->define(App\Company::class, function (Faker\Generator $faker) {
         'comp_other' => $faker->catchPhrase
     ];
 });
+
+$factory->define(App\Profile::class, function (Faker\Generator $faker) {
+    return [
+        'prof_name' => $faker->name ,
+        'prof_salary' => $faker->randomFloat($nbMaxDecimals = NULL, $min = 0, $max = NULL),
+        'prof_grade' => $faker->numberBetween($min = 1, $max = 5),
+        'comp_id' => $faker->numberBetween($min = 1, $max = 5),
+        'pos_id' => $faker->numberBetween($min = 1, $max = 5)
+    ];
+});
+
+$factory->define(App\Position::class, function (Faker\Generator $faker) {
+    return [
+        'pos_name' => $faker->catchPhrase
+    ];
+});
