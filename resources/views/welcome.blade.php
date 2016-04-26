@@ -2,9 +2,7 @@
 <html>
 <head>
   <title>Laravel</title>
-
   <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
-
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
 
   <!--[if lte IE 8]>
@@ -24,27 +22,27 @@
 </head>
 <body>
   <div class="container">
-    <form class="pure-form pure-form-stacked">
+    <form class="pure-form pure-form-stacked" action="{{ route('auth_store_path') }} " method="post">
       <fieldset>
-        <legend>A Stacked Form</legend>
+        <legend>Acces Mktavg</legend>
 
-        <label for="email">Email</label>
-        <input id="email" type="email" placeholder="Email">
+        <label for="email">Username</label>
+        <input id="email" type="text" placeholder="Email" name="username" class="pure-input-1-2">
 
         <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Password">
+        <input id="password" type="password" placeholder="Password" name="password" class="pure-input-1-2">
 
-        <label for="state">State</label>
-        <select id="state">
-          <option>AL</option>
-          <option>CA</option>
-          <option>IL</option>
+        <label for="state">Company</label>
+        <select id="state" name="company" class="pure-input-1-2">
+          @foreach ($companies as $company)
+          <option value="{{ $company->comp_name }}">{{ $company->id }} : {{ $company->comp_name }}</option>
+          @endforeach
         </select>
 
         <label for="remember" class="pure-checkbox">
           <input id="remember" type="checkbox"> Remember me
         </label>
-
+        {{ csrf_field() }}
         <button type="submit" class="pure-button pure-button-primary">Sign in</button>
       </fieldset>
     </form>
