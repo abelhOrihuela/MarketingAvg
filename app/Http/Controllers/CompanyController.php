@@ -6,18 +6,24 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Company;
+use App\Profile;
+use App\Position;
 use Session;
 
 class CompanyController extends Controller
 {
     public function index(){
       $companies=Company::all();
-      //return $companies;
+
       return view('welcome')->with('companies', $companies);
     }
 
-    public function dashboard(Request $request){
-        Session::put('company', $request->company);
-      return Session::get('company');
+    public function dashboard(){
+      //return "oalH";
+      //  Session::put('company', $request->company);
+
+        $company=Company::where('comp_name', "=", session('company'))->first();
+
+      return view('dashboard')->with('company', $company);
     }
 }

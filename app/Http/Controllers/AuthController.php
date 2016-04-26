@@ -37,16 +37,16 @@ class AuthController extends Controller
     public function store(Request $request)
     {
       Session::put('company', $request->company);
-      /*
+
         $this->validate($request, [
             'email'    => 'required|email',
             'password' => 'required',
         ]);
 
         if (!auth()->attempt($request->only(['email', 'password']))) {
-            return redirect()->route('auth_show_path')->withErrors('No encontramos al usuario.');
+            return redirect()->route('company_index_path')->withErrors('No encontramos al usuario.');
         }
-        */
+
 
         return redirect()->route('company_dashboard_path');
     }

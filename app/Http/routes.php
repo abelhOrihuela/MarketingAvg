@@ -18,7 +18,12 @@ Route::get('/', [
     'as'   => 'company_index_path'
 ]);
 
-Route::post('/dashboard', [
+Route::post('/login', [
+    'uses' => 'AuthController@store',
+    'as'   => 'auth_store_path'
+]);
+
+Route::get('/dashboard', [
     'uses' => 'CompanyController@dashboard',
     'as'   => 'company_dashboard_path'
 ]);
