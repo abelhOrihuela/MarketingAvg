@@ -27,7 +27,7 @@
         <legend>Acces Mktavg</legend>
 
         <label for="email">Username</label>
-        <input id="email" type="text" placeholder="Email" name="username" class="pure-input-1-2">
+        <input id="email" type="text" placeholder="Email" name="email" class="pure-input-1-2">
 
         <label for="password">Password</label>
         <input id="password" type="password" placeholder="Password" name="password" class="pure-input-1-2">
@@ -35,7 +35,7 @@
         <label for="state">Company</label>
         <select id="state" name="company" class="pure-input-1-2">
           @foreach ($companies as $company)
-          <option value="{{ $company->comp_name }}">{{ $company->id }} : {{ $company->comp_name }}</option>
+          <option value="{{ $company->id }}">{{ $company->id }} : {{ $company->comp_name }}</option>
           @endforeach
         </select>
 
