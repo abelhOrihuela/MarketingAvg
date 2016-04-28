@@ -20,6 +20,7 @@
   <![endif]-->
   <!--[if gt IE 8]><!-->
   <link rel="stylesheet" href="css/blog.css">
+  <link rel="stylesheet" href="../css/blog.css">
   <!--<![endif]-->
 
 </head>
@@ -33,10 +34,10 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="pure-button" href="#">Pure</a>
+              <a class="pure-button" href="{{ route('auth_destroy_path') }}">Salir</a>
             </li>
             <li class="nav-item">
-              <a class="pure-button" href="#">YUI Library</a>
+              <a class="pure-button" href="{{ route('company_menu_path') }}">Dashboard</a>
             </li>
           </ul>
         </nav>
@@ -44,6 +45,7 @@
     </div>
 
     <div class="content pure-u-1 pure-u-md-3-4">
+
       @yield('content')
     </div>
   </div>
