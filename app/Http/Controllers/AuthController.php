@@ -92,6 +92,6 @@ class AuthController extends Controller
   {
     auth()->logout();
 
-    return redirect()->route('auth_show_path');
+    return redirect()->route('company_index_path');
   }
 }

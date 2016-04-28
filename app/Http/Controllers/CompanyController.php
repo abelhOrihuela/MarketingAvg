@@ -23,7 +23,7 @@ class CompanyController extends Controller
     $company=Company::where('id', "=", session('company'))->first();
     $grades=Profile::where("comp_id", "=", session('company'))->groupBy('prof_grade')->get();
 
-    return view('dashboard')
+    return view('index')
       ->with('company', $company)
       ->with('grades', $grades);
   }
@@ -49,5 +49,9 @@ class CompanyController extends Controller
       ->with('companyGrade', $companyGrade)
       ->with('id', $id)
       ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
+  }
+
+  public function menu(){
+    return view('dashboard');
   }
 }
