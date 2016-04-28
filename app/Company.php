@@ -9,6 +9,6 @@ class Company extends Model
     protected $table='companies';
 
     public function profiles(){
-       return $this->hasMany('App\Profile', 'comp_id');
+       return $this->hasMany('App\Profile', 'comp_id')->orderBy('prof_grade')->orderBy('prof_salary');
     }
 }
