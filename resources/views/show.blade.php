@@ -1,31 +1,60 @@
 @extends('layout.base')
 @section('content')
-<h1></h1>
+
+<?php
+  $salaryMed=$companyGradeSalaryLow->prof_salary;
+  $sizeArray=sizeOf($companyGrade);
+ ?>
 
 <table class="pure-table">
-    <thead>
-        <tr>
+  <thead>
+    <tr>
+      <th>Grade</th>
+      <th>Position</th>
+      <th>Salary</th>
+      <th>Min</th>
+      <th>Med</th>
+      <th>Max</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
 
-          <th>Position</th>
-          <th>Name</th>
-          <th>Salary</th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach ($companyGrade as $profile)
-<tr>
+      <td rowspan="{{ sizeOf($companyGrade) }}">
+        {{ $id }}
+      </td>
 
-  <td>
-    {{ $profile->pos_name }}
-  </td>
-  <td>
-    {{ $profile->prof_name }}
-  </td>
-  <td>
-    $ {{ $profile->prof_salary }}
-  </td>
-</tr>
-@endforeach
-</tbody>
+      <?php
+       for ($i=0; $i < $sizeArray; $i++) {
+         $salaryMed+=($companyGrade[$i]->prof_progresion * $i);
+      ?>
+
+      <td>
+        <a href="">{{ $companyGrade[$i]->pos_name }}</a>
+      </td>
+      <td>
+        $ {{ $companyGrade[$i]->prof_salary }}
+      </td>
+      <td>
+        $ {{ ($salaryMed * -$companyGrade[$i]->prof_min) + $salaryMed }}
+      </td>
+      <td>
+        $ {{ $salaryMed }}
+      </td>
+      <td>
+        $ {{ ($salaryMed * $companyGrade[$i]->prof_min) + $salaryMed }}
+      </td>
+      </tr>
+
+
+
+      <?php
+           }
+
+       ?>
+
+
+
+    </tbody>
 </table>
 @stop
