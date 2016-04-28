@@ -27,3 +27,9 @@ Route::get('/dashboard', [
     'uses' => 'CompanyController@dashboard',
     'as'   => 'company_dashboard_path'
 ]);
+
+
+Route::get('/{id}', [
+    'uses' => 'CompanyController@show',
+    'as'   => 'company_show_path'
+]);

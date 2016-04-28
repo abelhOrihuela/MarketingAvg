@@ -33,8 +33,21 @@ class CompanyController extends Controller
       ->where('companies.id', '=', session('company'))
       ->where('profiles.prof_grade', '=', $id)
       ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+      ->orderBy('prof_salary')
       ->get();
+    $companyGradeSalaryLow=DB::table('companies')
+      ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
+      ->where('companies.id', '=', session('company'))
+      ->where('profiles.prof_grade', '=', $id)
+      ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+      ->orderBy('prof_salary')
+      ->first();
 
-    return view('show')->with('companyGrade', $companyGrade);
+
+
+    return view('show')
+      ->with('companyGrade', $companyGrade)
+      ->with('id', $id)
+      ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
   }
 }
