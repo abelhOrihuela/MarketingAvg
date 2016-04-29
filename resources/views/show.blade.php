@@ -26,7 +26,7 @@
 
       <?php
        for ($i=0; $i < $sizeArray; $i++) {
-         $salaryMed+=($companyGrade[$i]->prof_progresion * $i);
+
       ?>
 
       <td>
@@ -39,7 +39,7 @@
         $ {{ ($salaryMed * -$companyGrade[$i]->prof_min) + $salaryMed }}
       </td>
       <td>
-        $ {{ $salaryMed }}
+        $ {{ $salaryMed  }}
       </td>
       <td>
         $ {{ ($salaryMed * $companyGrade[$i]->prof_min) + $salaryMed }}
@@ -49,6 +49,7 @@
 
 
       <?php
+       $salaryMed+=1*($companyGrade[$i]->prof_progresion * $i);
            }
 
        ?>

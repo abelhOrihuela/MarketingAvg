@@ -34,10 +34,14 @@
         <nav class="nav">
           <ul class="nav-list">
             <li class="nav-item">
-              <a class="pure-button" href="{{ route('auth_destroy_path') }}">Salir</a>
+              <a class="pure-button" href="{{ route('company_dashboard_path') }}">Main</a>
             </li>
             <li class="nav-item">
               <a class="pure-button" href="{{ route('company_menu_path') }}">Dashboard</a>
+            </li>
+            <li class="nav-item">
+
+              <a class="pure-button" href="{{ route('auth_destroy_path') }}">Logout</a>
             </li>
           </ul>
         </nav>

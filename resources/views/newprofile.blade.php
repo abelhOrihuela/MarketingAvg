@@ -11,7 +11,7 @@
 
     <div class="pure-u-1 pure-u-md-1-3">
       <label for="salary">Salary</label>
-      <input type="number" name="salary" value="" id="salary">
+      <input type="text" name="salary" value="" id="salary">
     </div>
 
     <div class="pure-u-1 pure-u-md-1-3">
