@@ -33,19 +33,12 @@ class ProfileController extends Controller
       $profile->prof_grade=$request->grade;
       $profile->pos_id=$request->position;
       $profile->comp_id=session('company');
-      /*
-
-      $product= new Product();
-    $product->name=$request->name;
-    $product->description=$request->description;
-    $product->cost=$request->cost;
-    $product->price=$request->price;
-    $product->other=$request->other;
-    $product->code=$request->code;
 
 
-      */
+
       $profile->save();
-      //dd($request->all());
+
+      return redirect()->route('profile_new_path');
+
     }
 }

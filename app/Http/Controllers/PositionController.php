@@ -20,5 +20,7 @@ class PositionController extends Controller
       $position->pos_other=$request->description;
       $position->save();
 
+      return redirect()->route('position_store_path');
+
     }
 }
