@@ -23,6 +23,29 @@ class ProfileController extends Controller
     }
 
     public function create(Request $request){
-      dd($request);
+
+      $profile= new Profile();
+      $profile->prof_name=$request->name;
+      $profile->prof_salary=$request->salary;
+      $profile->prof_progresion=$request->progresion;
+      $profile->prof_min=$request->min;
+      $profile->prof_max=$request->max;
+      $profile->prof_grade=$request->grade;
+      $profile->pos_id=$request->position;
+      $profile->comp_id=session('company');
+      /*
+
+      $product= new Product();
+    $product->name=$request->name;
+    $product->description=$request->description;
+    $product->cost=$request->cost;
+    $product->price=$request->price;
+    $product->other=$request->other;
+    $product->code=$request->code;
+
+
+      */
+      $profile->save();
+      //dd($request->all());
     }
 }

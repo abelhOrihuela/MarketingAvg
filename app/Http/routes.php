@@ -39,6 +39,11 @@ Route::get('/grade/{id}', [
     'as'   => 'company_show_path'
 ]);
 
+Route::get('/company/all', [
+    'uses' => 'CompanyController@showall',
+    'as'   => 'company_showall_path'
+]);
+
 Route::get('new/profile',[
   'uses' => 'ProfileController@store',
   'as'   => 'profile_new_path'
@@ -47,6 +52,17 @@ Route::get('new/profile',[
 Route::post('new/profile',[
   'uses' => 'ProfileController@create',
   'as'   => 'profile_create_path'
+]);
+
+
+Route::get('new/position',[
+  'uses' => 'PositionController@store',
+  'as'   => 'position_store_path'
+]);
+
+Route::post('new/position',[
+  'uses' => 'PositionController@create',
+  'as'   => 'position_create_path'
 ]);
 
 Route::get('/dashboard',[

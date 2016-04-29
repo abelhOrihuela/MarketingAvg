@@ -51,6 +51,28 @@ class CompanyController extends Controller
       ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
   }
 
+  public function showall(){
+    $companyGrade=DB::table('companies')
+      ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
+      ->where('companies.id', '=', session('company'))
+      ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+      ->orderBy('prof_grade')
+      ->orderBy('prof_salary')
+      ->get();
+    $companyGradeSalaryLow=DB::table('companies')
+      ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
+      ->where('companies.id', '=', session('company'))
+      ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+      ->orderBy('prof_salary')
+      ->first();
+
+
+
+    return view('showall')
+      ->with('companyGrade', $companyGrade)
+      ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
+  }
+
   public function menu(){
     return view('dashboard');
   }
