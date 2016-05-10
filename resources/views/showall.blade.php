@@ -34,16 +34,20 @@
         <a href="">{{ $companyGrade[$i]->pos_name }}</a>
       </td>
       <td>
-        $ {{ $companyGrade[$i]->prof_salary }}
+        $ {{
+        number_format ( $companyGrade[$i]->prof_salary , 2 , "." , "," )
+       }}
       </td>
       <td>
-        $ {{ ($salaryMed * -$companyGrade[$i]->prof_min) + $salaryMed }}
+        $ {{ number_format ( ($salaryMed * -$companyGrade[$i]->prof_min) + $salaryMed , 2 , "." , "," )
+           }}
       </td>
       <td>
-        $ {{ $salaryMed }}
+        $ {{ number_format ( $salaryMed , 2 , "." , "," )  }}
       </td>
       <td>
-        $ {{ ($salaryMed * $companyGrade[$i]->prof_min) + $salaryMed }}
+        $ {{ number_format (($salaryMed * $companyGrade[$i]->prof_min) + $salaryMed , 2 , "." , "," )
+           }}
       </td>
       </tr>
 

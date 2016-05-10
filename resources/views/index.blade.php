@@ -1,6 +1,6 @@
 @extends('layout.base')
 @section('content')
-<h1>Company : {{ $company->comp_name  }}</h1>
+<h3>{{ $company->comp_name  }}</h3>
 <nav>
   <ul>
     Grades :
@@ -33,7 +33,7 @@
     {{ $profile->prof_name }}
   </td>
   <td>
-    $ {{ $profile->prof_salary }}
+    $ {{ number_format ( $profile->prof_salary , 2 , "." , "," ) }}
   </td>
 </tr>
 @endforeach

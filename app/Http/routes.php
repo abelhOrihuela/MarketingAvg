@@ -69,3 +69,8 @@ Route::get('/dashboard',[
   'uses' => 'CompanyController@menu',
   'as'   => 'company_menu_path'
 ]);
+
+Route::get('/getpdf',[
+  'uses' => 'CompanyController@downloadPdf',
+  'as'   => 'company_pdf_path'
+]);
