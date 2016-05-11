@@ -54,6 +54,16 @@ Route::post('new/profile',[
   'as'   => 'profile_create_path'
 ]);
 
+Route::get('profile/{id}',[
+  'uses' => 'ProfileController@edit',
+  'as'   => 'profile_edit_path'
+]);
+
+Route::post('profile/{id}',[
+  'uses' => 'ProfileController@update',
+  'as'   => 'profile_update_path'
+]);
+
 
 Route::get('new/position',[
   'uses' => 'PositionController@store',
