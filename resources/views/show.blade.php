@@ -1,11 +1,15 @@
 @extends('layout.base')
 @section('content')
 
+
 <?php
   $salaryMed=$companyGradeSalaryLow->prof_salary;
   $sizeArray=sizeOf($companyGrade);
+  $promedio=0;
  ?>
 
+
+<h2>{{ $companyGradeSalaryLow->comp_id }}</h2>
 <table class="pure-table">
   <thead>
     <tr>

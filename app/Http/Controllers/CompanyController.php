@@ -44,12 +44,17 @@ class CompanyController extends Controller
     ->orderBy('prof_salary')
     ->first();
 
+    if($companyGradeSalaryLow){
+      return view('show')
+      ->with('companyGrade', $companyGrade)
+      ->with('id', $id)
+      ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
+    }
+    else{
+      return "No existe coincidencia alguna";
+    }
 
 
-    return view('show')
-    ->with('companyGrade', $companyGrade)
-    ->with('id', $id)
-    ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
   }
 
   public function showall(){

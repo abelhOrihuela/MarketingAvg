@@ -16,7 +16,7 @@
 <table class="pure-table">
     <thead>
         <tr>
-
+          <th>Grade</th>
           <th>Position</th>
           <th>Name</th>
           <th>Salary</th>
@@ -25,12 +25,14 @@
     <tbody>
 @foreach ($company->profiles as $profile)
 <tr>
-
   <td>
-    {{ $profile->position->pos_name }}
+    {{ $profile->prof_grade }}
   </td>
   <td>
-    {{ $profile->prof_name }}
+     {{ $profile->position->pos_name }}
+  </td>
+  <td>
+  <a href="{{route('profile_edit_path', $profile->id )}}">  {{ $profile->prof_name }}</a>
   </td>
   <td>
     $ {{ number_format ( $profile->prof_salary , 2 , "." , "," ) }}
