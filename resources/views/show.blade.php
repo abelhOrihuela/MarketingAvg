@@ -9,7 +9,6 @@
  ?>
 
 
-<h2>{{ $companyGradeSalaryLow->comp_id }}</h2>
 <table class="pure-table">
   <thead>
     <tr>
@@ -65,5 +64,4 @@
     </tbody>
 
 </table>
-<a href="{{ route('company_pdf_path') }}">Download</a>
 @stop

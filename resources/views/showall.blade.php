@@ -2,9 +2,11 @@
 @section('content')
 
 <?php
-  $salaryMed=$companyGradeSalaryLow->prof_salary;
-  $sizeArray=sizeOf($companyGrade);
- ?>
+
+$sizeArray=sizeOf($companyGrade);
+
+
+?>
 
 <table class="pure-table">
   <thead>
@@ -19,47 +21,54 @@
   </thead>
   <tbody>
 
+    <?php
+    for ($i=0; $i < sizeOf($salaryLowForGrade); $i++) {
+      $salaryMed=$salaryLowForGrade[$i]->prof_salary;
+      for ($j=0; $j < sizeOf($companyGrade); $j++) {
+        if ($salaryLowForGrade[$i]->prof_grade==$companyGrade[$j]->prof_grade) {
+          $salaryMed+=($companyGrade[$j]->prof_progresion * $j);
+          ?>
 
-
-
-      <?php
-       for ($i=0; $i < $sizeArray; $i++) {
-         $salaryMed+=($companyGrade[$i]->prof_progresion * $i);
-      ?>
-      <tr>
-      <td >
-        {{ $companyGrade[$i]->prof_grade}}
-      </td>
-      <td>
-        <a href="">{{ $companyGrade[$i]->pos_name }}</a>
-      </td>
-      <td>
-        $ {{
-        number_format ( $companyGrade[$i]->prof_salary , 2 , "." , "," )
-       }}
-      </td>
-      <td>
-        $ {{ number_format ( ($salaryMed * -$companyGrade[$i]->prof_min) + $salaryMed , 2 , "." , "," )
-           }}
-      </td>
-      <td>
-        $ {{ number_format ( $salaryMed , 2 , "." , "," )  }}
-      </td>
-      <td>
-        $ {{ number_format (($salaryMed * $companyGrade[$i]->prof_min) + $salaryMed , 2 , "." , "," )
-           }}
-      </td>
+          <tr>
+            <td >
+              {{ $companyGrade[$j]->prof_grade}}
+            </td>
+            <td>
+              {{ $companyGrade[$j]->pos_name }}
+            </td>
+            <td>
+              $ {{
+                number_format ( $companyGrade[$j]->prof_salary , 2 , "." , "," )
+              }}
+            </td>
+            <td>
+              $ {{ number_format ( ($salaryMed * -$companyGrade[$j]->prof_min) + $salaryMed , 2 , "." , "," )
+            }}
+          </td>
+          <td>
+            $ {{ number_format ( $salaryMed , 2 , "." , "," )  }}
+          </td>
+          <td>
+            $ {{ number_format (($salaryMed * $companyGrade[$j]->prof_min) + $salaryMed , 2 , "." , "," )
+          }}
+        </td>
       </tr>
 
+          <?php
+        }
+      }
+    }
 
 
-      <?php
-           }
-
-       ?>
+      ?>
 
 
 
-    </tbody>
+</tbody>
 </table>
+<div class="item-download">
+  <a href="{{ route('company_pdf_path') }}"><img src="../img/PDF-download.png" alt="" style="width:60px"/></a>
+Download
+</div>
+
 @stop

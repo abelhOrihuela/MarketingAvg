@@ -191,3 +191,25 @@ h3 {
 .container-row img{
   width: 80%;
 }
+.font-table-wtc{
+  font-size: 14px;
+  margin-left: 20px;
+}
+
+.title-table{
+  text-align: center;
+  background-color: #E0E0E0;
+}
+.img-header{
+
+  margin-bottom: 50px;
+
+}
+
+.footer-table{
+  text-align: center;
+}
+.item-download{
+  margin: 50px;
+  text-align: center;
+}

@@ -2,8 +2,11 @@
 @section('content')
 <h3>{{ $company->comp_name  }}</h3>
 <nav>
+  <a href="{{ route('company_showall_path') }}" class="pure-menu-link">Company all Position's</a>
+<br>
   <ul>
     Grades :
+
     @foreach( $grades as $grade)
 
 
@@ -11,6 +14,8 @@
 
 
 @endforeach
+
+
   </ul>
 </nav>
 <table class="pure-table">
