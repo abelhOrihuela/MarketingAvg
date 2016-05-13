@@ -22,30 +22,35 @@
 </head>
 <body>
   <div class="container">
-    <form class="pure-form pure-form-stacked" action="{{ route('auth_store_path') }} " method="post">
-      <fieldset>
-        <legend>Acces Mktavg</legend>
+    <section class="container-row">
+      <form class="pure-form pure-form-stacked" action="{{ route('auth_store_path') }} " method="post">
+        <fieldset>
+          <legend><img src="img/logo.png" alt="" /></legend>
 
-        <label for="email">Username</label>
-        <input id="email" type="text" placeholder="Email" name="email" class="pure-input-1-2">
+          <label for="email">Username</label>
+          <input id="email" type="text" placeholder="Email" name="email" class="pure-input-1-2">
 
-        <label for="password">Password</label>
-        <input id="password" type="password" placeholder="Password" name="password" class="pure-input-1-2">
+          <label for="password">Password</label>
+          <input id="password" type="password" placeholder="Password" name="password" class="pure-input-1-2">
 
-        <label for="state">Company</label>
-        <select id="state" name="company" class="pure-input-1-2">
-          @foreach ($companies as $company)
-          <option value="{{ $company->id }}">{{ $company->id }} : {{ $company->comp_name }}</option>
-          @endforeach
-        </select>
+          <label for="state">Company</label>
+          <select id="state" name="company" class="pure-input-1-2">
+            @foreach ($companies as $company)
+            <option value="{{ $company->id }}">{{ $company->id }} : {{ $company->comp_name }}</option>
+            @endforeach
+          </select>
 
-        <label for="remember" class="pure-checkbox">
-          <input id="remember" type="checkbox"> Remember me
-        </label>
-        {{ csrf_field() }}
-        <button type="submit" class="pure-button pure-button-primary">Sign in</button>
-      </fieldset>
-    </form>
+          <label for="remember" class="pure-checkbox">
+            <input id="remember" type="checkbox"> Remember me
+          </label>
+          {{ csrf_field() }}
+          <button type="submit" class="pure-button pure-button-primary">Sign in</button>
+        </fieldset>
+      </form>
+
+    </section>
+
+
   </div>
 </body>
 </html>
