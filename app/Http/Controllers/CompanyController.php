@@ -51,13 +51,29 @@ class CompanyController extends Controller
       ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
     }
     else{
-      return "No existe coincidencia alguna";
+      return view('errors.503');
     }
 
 
   }
 
   public function showall(){
+
+    /***********************************************************/
+    /* CONSULTAR TODOS LOS GRADOS EXISTENTES PARA LA EMPRESA*/
+    $allGradesForCompany=$salaryLow=DB::table('profiles')
+    ->where('profiles.comp_id', '!=', session('company'))
+    ->groupBy('prof_grade')
+    ->get();
+
+
+    $salaryLowForGrade=[];
+    for ($i=0; $i < sizeOf($allGradesForCompany) ; $i++) {
+
+      $salaryLowForGrade[$i]=$this->salaryLowGrade($allGradesForCompany[$i]->prof_grade);
+
+    }
+
     $companyGrade=DB::table('companies')
     ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
     ->where('companies.id', '=', session('company'))
@@ -65,17 +81,18 @@ class CompanyController extends Controller
     ->orderBy('prof_grade')
     ->orderBy('prof_salary')
     ->get();
-    $companyGradeSalaryLow=DB::table('companies')
-    ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
-    ->where('companies.id', '=', session('company'))
+    $companyGradeSalaryLow=DB::table('profiles')
+    ->where('profiles.comp_id', '!=', session('company'))
     ->join('positions', 'profiles.pos_id', '=', 'positions.id')
     ->orderBy('prof_salary')
     ->first();
 
 
 
+
     return view('showall')
     ->with('companyGrade', $companyGrade)
+    ->with('salaryLowForGrade', $salaryLowForGrade)
     ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
   }
 
@@ -89,26 +106,40 @@ class CompanyController extends Controller
     set_time_limit(0);
     $pdf =  \App::make('dompdf.wrapper');
     $pdf->loadHTML("");
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $view =  \View::make('pdf.invoice', compact('data', 'date', 'invoice'))->render();
+    $allGradesForCompany=$salaryLow=DB::table('profiles')
+    ->where('profiles.comp_id', '!=', session('company'))
+    ->groupBy('prof_grade')
+    ->get();
+
+
+    $salaryLowForGrade=[];
+    for ($i=0; $i < sizeOf($allGradesForCompany) ; $i++) {
+
+      $salaryLowForGrade[$i]=$this->salaryLowGrade($allGradesForCompany[$i]->prof_grade);
+
+    }
+
+    $companyGrade=DB::table('companies')
+    ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
+    ->where('companies.id', '=', session('company'))
+    ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+    ->orderBy('prof_grade')
+    ->orderBy('prof_salary')
+    ->get();
+    $companyGradeSalaryLow=DB::table('profiles')
+    ->where('profiles.comp_id', '!=', session('company'))
+    ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+    ->orderBy('prof_salary')
+    ->first();
+    $view =  \View::make('pdf.invoice', compact('companyGrade', 'salaryLowForGrade', 'companyGradeSalaryLow'))->render();
 
     $pdf->loadHTML("<h1>Test</h1>");
-  //  return $pdf->stream();
+    //  return $pdf->stream();
 
-     $pdf->loadHTML($view);
-     return $pdf->download('hola.pdf');
-/*
-    $data = $this->getData();
-
-    $data = $this->getData();
-    $date = date('Y-m-d');
-    $invoice = "2222";
-    $view =  \View::make('pdf.invoice', compact('data', 'date', 'invoice'))->render();
-    $pdf = \App::make('dompdf.wrapper');
     $pdf->loadHTML($view);
-    return $pdf->stream('invoice.pdf');
-    */
+    return $pdf->download("Analisis".session('company').'.pdf');
+
+
 
   }
 
@@ -120,5 +151,17 @@ class CompanyController extends Controller
       'total'     => '500'
     ];
     return $data;
+  }
+
+  public function salaryLowGrade($id){
+
+    $salaryLow=DB::table('profiles')
+    ->where('profiles.prof_grade', '=', $id)
+    ->where('profiles.comp_id', '!=', session('company'))
+    ->join('positions', 'profiles.pos_id', '=', 'positions.id')
+    ->orderBy('prof_salary')
+    ->first();
+
+    return $salaryLow;
   }
 }
