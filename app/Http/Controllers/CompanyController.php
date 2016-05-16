@@ -19,9 +19,9 @@ class CompanyController extends Controller
   }
 
   public function dashboard(){
-
     $company=Company::where('id', "=", session('company'))->first();
     $grades=Profile::where("comp_id", "=", session('company'))->groupBy('prof_grade')->get();
+    Session::put('companyName', $company->comp_name);
 
     return view('index')
     ->with('company', $company)
@@ -131,13 +131,14 @@ class CompanyController extends Controller
     ->join('positions', 'profiles.pos_id', '=', 'positions.id')
     ->orderBy('prof_salary')
     ->first();
-    $view =  \View::make('pdf.invoice', compact('companyGrade', 'salaryLowForGrade', 'companyGradeSalaryLow'))->render();
+    $companyName=session('companyName');
+    $view =  \View::make('pdf.invoice', compact('companyGrade', 'salaryLowForGrade', 'companyGradeSalaryLow','companyName'))->render();
 
     $pdf->loadHTML("<h1>Test</h1>");
     //  return $pdf->stream();
 
     $pdf->loadHTML($view);
-    return $pdf->download("Analisis".session('company').'.pdf');
+    return $pdf->download(session('companyName').'.pdf');
 
 
 
