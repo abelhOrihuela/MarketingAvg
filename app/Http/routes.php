@@ -22,15 +22,19 @@ Route::post('/login', [
     'uses' => 'AuthController@store',
     'as'   => 'auth_store_path'
 ]);
+
+Route::group(['middleware' => 'auth'], function () {
+  Route::get('/index', [
+      'uses' => 'CompanyController@dashboard',
+      'as'   => 'company_dashboard_path'
+  ]);
+});
 Route::get('/logout', [
     'uses' => 'AuthController@destroy',
     'as'   => 'auth_destroy_path'
 ]);
 
-Route::get('/index', [
-    'uses' => 'CompanyController@dashboard',
-    'as'   => 'company_dashboard_path'
-]);
+
 
 
 
