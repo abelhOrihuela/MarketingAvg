@@ -56,10 +56,7 @@
       <?php
        $salaryMed+=1*($companyGrade[$i]->prof_progresion * $i);
            }
-
        ?>
-
-
 
     </tbody>
 

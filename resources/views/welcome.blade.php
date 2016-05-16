@@ -39,7 +39,6 @@
             <option value="{{ $company->id }}">{{ $company->id }} : {{ $company->comp_name }}</option>
             @endforeach
           </select>
-
           <label for="remember" class="pure-checkbox">
             <input id="remember" type="checkbox"> Remember me
           </label>
@@ -47,10 +46,7 @@
           <button type="submit" class="pure-button pure-button-primary">Sign in</button>
         </fieldset>
       </form>
-
     </section>
-
-
   </div>
 </body>
 </html>

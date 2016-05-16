@@ -5,14 +5,14 @@
 
 $sizeArray=sizeOf($companyGrade);
 
-
 ?>
 
-<table class="pure-table">
+<table class="pure-table border-table ">
   <thead>
     <tr>
-      <th>Grade</th>
+      <th class="bg-blue">Grade</th>
       <th>Position</th>
+      <th>Name</th>
       <th>Salary</th>
       <th>Min</th>
       <th>Med</th>
@@ -29,12 +29,33 @@ $sizeArray=sizeOf($companyGrade);
           $salaryMed+=($companyGrade[$j]->prof_progresion * $j);
           ?>
 
+          <?php
+
+          if ($salaryLowForGrade[$i]->prof_grade==19) {
+            ?>
+            <tr>
+
+              <td colspan="7" >
+<h3 class="title-table division-executive ">Executive positions</h3>
+              </td>
+
+
+
+        </tr>
+            <?php
+          }
+           ?>
+
           <tr>
             <td >
               {{ $companyGrade[$j]->prof_grade}}
             </td>
             <td>
               {{ $companyGrade[$j]->pos_name }}
+            </td>
+
+            <td>
+              {{ $companyGrade[$j]->prof_name }}
             </td>
             <td>
               $ {{
@@ -58,12 +79,7 @@ $sizeArray=sizeOf($companyGrade);
         }
       }
     }
-
-
       ?>
-
-
-
 </tbody>
 </table>
 <div class="item-download">

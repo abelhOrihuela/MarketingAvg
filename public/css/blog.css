@@ -192,24 +192,33 @@ h3 {
   width: 80%;
 }
 .font-table-wtc{
-  font-size: 14px;
-  margin-left: 20px;
+  font-size: 12px;
+  margin-right:auto;
+  margin-left: auto;
 }
 
 .title-table{
   text-align: center;
-  background-color: #E0E0E0;
+
 }
 .img-header{
-
   margin-bottom: 50px;
-
 }
-
 .footer-table{
   text-align: center;
 }
 .item-download{
   margin: 50px;
   text-align: center;
+}
+
+.border-table tr{
+  border: 2px solid #EEEEEE;
+}
+.bg-blue{
+  background-color: #29B6F6;
+}
+.company-name{
+  font-size: 40px;
+  font-family: 'Open Sans', sans-serif;
 }
