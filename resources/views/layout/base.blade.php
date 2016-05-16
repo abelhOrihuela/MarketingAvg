@@ -51,7 +51,7 @@
           <li class="pure-menu-item"><a href="{{ route('company_showall_path') }}" class="pure-menu-link">Resume</a></li>
         </ul>
       </div>
-
+      <h3 class="company-name">{{ session('companyName')  }}</h3>
       @yield('content')
     </div>
   </div>

@@ -16,7 +16,8 @@
   <div class="img-header">
     <img src="img/logo.png" alt="" />
   </div>
-  <h2 class="title-table">Analisis de sueldos</h2>
+  <h2 class="title-table">{{ $companyName }}</h2>
+  <h3>Salary structure</h3>
   <table class="pure-table font-table-wtc border-table">
     <thead>
       <tr>

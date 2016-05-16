@@ -1,6 +1,6 @@
 @extends('layout.base')
 @section('content')
-<h3 class="company-name">{{ $company->comp_name  }}</h3>
+
 
 <table class="pure-table">
   <thead>
