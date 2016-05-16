@@ -222,3 +222,8 @@ h3 {
   font-size: 40px;
   font-family: 'Open Sans', sans-serif;
 }
+.center{
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
