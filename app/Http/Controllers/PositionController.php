@@ -11,7 +11,7 @@ class PositionController extends Controller
 {
     //
     public function store(){
-      return view('newposition');
+      return view('position.newposition');
     }
 
     public function create(Request $request){

@@ -18,15 +18,11 @@ class CompanyController extends Controller
     return view('welcome')->with('companies', $companies);
   }
 
-  public function dashboard(){
-    $company=Company::where('id', "=", session('company'))->first();
-    $grades=Profile::where("comp_id", "=", session('company'))->groupBy('prof_grade')->get();
-    Session::put('companyName', $company->comp_name);
-
-    return view('index')
-    ->with('company', $company)
-    ->with('grades', $grades);
+  public function store(){
+    return view('company.new');
   }
+
+
   public function show($id){
     $companyGrade=DB::table('companies')
     ->join('profiles', 'companies.id', '=', 'profiles.comp_id')
@@ -45,7 +41,7 @@ class CompanyController extends Controller
     ->first();
 
     if($companyGradeSalaryLow){
-      return view('show')
+      return view('company.show')
       ->with('companyGrade', $companyGrade)
       ->with('id', $id)
       ->with('companyGradeSalaryLow', $companyGradeSalaryLow);
@@ -55,6 +51,16 @@ class CompanyController extends Controller
     }
 
 
+  }
+/********************************************************************************/
+  public function dashboard(){
+    $company=Company::where('id', "=", session('company'))->first();
+    $grades=Profile::where("comp_id", "=", session('company'))->groupBy('prof_grade')->get();
+    Session::put('companyName', $company->comp_name);
+
+    return view('company.index')
+    ->with('company', $company)
+    ->with('grades', $grades);
   }
 
   public function showall(){
@@ -90,7 +96,7 @@ class CompanyController extends Controller
 
 
 
-    return view('showall')
+    return view('company.showall')
     ->with('companyGrade', $companyGrade)
     ->with('salaryLowForGrade', $salaryLowForGrade)
     ->with('companyGradeSalaryLow', $companyGradeSalaryLow);

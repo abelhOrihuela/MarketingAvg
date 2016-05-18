@@ -18,7 +18,7 @@ class ProfileController extends Controller
 
     public function store(){
       $positions=Position::all();
-      return view('newprofile')
+      return view('profile.newprofile')
         ->with('positions', $positions);
     }
 
@@ -47,7 +47,7 @@ class ProfileController extends Controller
       $positions=Position::all();
 
 
-      return view('edit')
+      return view('profile.edit')
         ->with('positions', $positions)
         ->with('profile', $profile);
     }
