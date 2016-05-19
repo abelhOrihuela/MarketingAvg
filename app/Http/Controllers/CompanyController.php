@@ -22,6 +22,21 @@ class CompanyController extends Controller
     return view('company.new');
   }
 
+  public function create(Request $request){
+    $company=new Company();
+    $company->comp_name=$request->company_name;
+    $company->comp_description=$request->company_description;
+    $company->comp_contact=$request->company_contact;
+    $company->comp_city=$request->company_city;
+    $company->comp_core=$request->company_core;
+
+
+    $company->save();
+
+
+    return redirect()->route('company_new_path');
+  }
+
 
   public function show($id){
     $companyGrade=DB::table('companies')
@@ -49,8 +64,6 @@ class CompanyController extends Controller
     else{
       return view('errors.503');
     }
-
-
   }
 /********************************************************************************/
   public function dashboard(){

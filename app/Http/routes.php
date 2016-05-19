@@ -53,6 +53,11 @@ Route::group(['middleware' => 'auth'], function () {
     'as'   => 'company_new_path'
   ]);
 
+  Route::post('new/company',[
+    'uses' => 'CompanyController@create',
+    'as'   => 'company_create_path'
+  ]);
+
   Route::get('new/profile',[
     'uses' => 'ProfileController@store',
     'as'   => 'profile_new_path'
