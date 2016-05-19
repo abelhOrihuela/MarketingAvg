@@ -45,7 +45,7 @@
 
     <div class="pure-u-1 pure-u-md-1-3">
       <label for="grade"></label>
-      <input type="submit" class="pure-button pure-button-primary"  value="Guardar" id="form">
+      <input type="submit" class="pure-button pure-button-primary"  value="Save" id="form">
 
     </div>
 

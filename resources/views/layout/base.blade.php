@@ -42,6 +42,7 @@
       </div>
     </div>
     <div class="content pure-u-1 pure-u-md-3-4">
+      <img src="../img/logo.png" alt="" class="img-header-view" />
       <div class="pure-menu pure-menu-horizontal">
         <a href="{{ route('company_dashboard_path') }}" class="pure-menu-heading pure-menu-link">Home</a>
         <ul class="pure-menu-list">
@@ -52,7 +53,12 @@
         </ul>
       </div>
       <h3 class="company-name">{{ session('companyName')  }}</h3>
+      <div class=" container_main">
+
+
       @yield('content')
+
+      </div>
     </div>
   </div>
 </body>
