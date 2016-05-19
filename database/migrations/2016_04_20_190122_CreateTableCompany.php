@@ -15,7 +15,10 @@ class CreateTableCompany extends Migration
           Schema::create('companies', function (Blueprint $table) {
               $table->increments('id');
               $table->string('comp_name');
-              $table->string('comp_other');
+              $table->string('comp_description');
+              $table->string('comp_contact');
+              $table->string('comp_city');
+              $table->string('comp_core');
               $table->timestamps();
           });
       }

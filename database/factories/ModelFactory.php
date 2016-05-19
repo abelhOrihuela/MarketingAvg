@@ -23,7 +23,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 $factory->define(App\Company::class, function (Faker\Generator $faker) {
     return [
         'comp_name' => $faker->company ,
-        'comp_other' => $faker->catchPhrase
+        'comp_description' => $faker->catchPhrase
     ];
 });
 
