@@ -35,9 +35,6 @@ Route::group(['middleware' => 'auth'], function () {
   ]);
 
 
-
-
-
   Route::get('/grade/{id}', [
     'uses' => 'CompanyController@show',
     'as'   => 'company_show_path'
@@ -48,12 +45,12 @@ Route::group(['middleware' => 'auth'], function () {
     'as'   => 'company_showall_path'
   ]);
 
-  Route::get('new/company',[
+  Route::get('/new/company',[
     'uses' => 'CompanyController@store',
     'as'   => 'company_new_path'
   ]);
 
-  Route::post('new/company',[
+  Route::post('/new/company',[
     'uses' => 'CompanyController@create',
     'as'   => 'company_create_path'
   ]);

@@ -7,6 +7,16 @@
   <title>Analisis de sueldos WTC</title>
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
   <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+
+
+
+
+  <script src="{{ asset('js/jquery-1.12.1.min.js')}}" charset="utf-8"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js">
+
+
+  </script>
   <!--[if lte IE 8]>
 
   <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/grids-responsive-old-ie-min.css">
@@ -19,7 +29,6 @@
   <link rel="stylesheet" href="css/layouts/blog-old-ie.css">
   <![endif]-->
   <!--[if gt IE 8]><!-->
-  <link rel="stylesheet" href="css/blog.css">
   <link rel="stylesheet" href="../css/blog.css">
   <!--<![endif]-->
 
@@ -61,5 +70,6 @@
       </div>
     </div>
   </div>
+
 </body>
 </html>

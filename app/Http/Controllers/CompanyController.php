@@ -23,18 +23,24 @@ class CompanyController extends Controller
   }
 
   public function create(Request $request){
-    $company=new Company();
-    $company->comp_name=$request->company_name;
-    $company->comp_description=$request->company_description;
-    $company->comp_contact=$request->company_contact;
-    $company->comp_city=$request->company_city;
-    $company->comp_core=$request->company_core;
+    $errors         = array();  	// array to hold validation errors
+    $data 			= array(); 		// array to pass back data
 
+    if($request->ajax()){
 
-    $company->save();
+      $company= new Company();
+      $company->comp_name=$request->comp_name;
+      $company->comp_description=$request->comp_description;
+      $company->comp_city=$request->comp_city;
+      $company->comp_contact=$request->comp_contact;
+      $company->comp_core=$request->comp_core;;
 
-
-    return redirect()->route('company_new_path');
+      if($company->save()){
+        return response()->json(['succes' => true, 'message' => 'El registro fue exitoso...']);
+      }else{
+        return response()->json(['return' => $request->name]);
+      }
+    }
   }
 
 
@@ -65,7 +71,7 @@ class CompanyController extends Controller
       return view('errors.503');
     }
   }
-/********************************************************************************/
+  /********************************************************************************/
   public function dashboard(){
     $company=Company::where('id', "=", session('company'))->first();
     $grades=Profile::where("comp_id", "=", session('company'))->groupBy('prof_grade')->get();
